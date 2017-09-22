@@ -1,2 +1,2 @@
 # RSSIDataCollector
-This includes the source related to RSSI data collection
+This includes the implementation of RSSI data collection
