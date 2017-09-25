@@ -15,9 +15,15 @@ import com.rssi.datacol.beans.AccessPoint;
 @Produces(MediaType.APPLICATION_JSON)
 public interface DataCollector {
 
+	/*
 	@POST
 	@Path("/storeData")
 	public int storeData(AccessPoint[] person);
+	**/
+	
+	@GET
+	@Path("/temp")
+	public int storeData();
 	
 	@GET
 	@Path("/getStoredDataCount")

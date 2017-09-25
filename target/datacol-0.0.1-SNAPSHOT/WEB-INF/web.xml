@@ -1,29 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+    <display-name>DATACOLLECTOR-API</display-name>
 
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javee"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/cxf-servlet.xml</param-value>
+    </context-param>
+    
+    <listener>
+        <listener-class>com.rssi.datacol.ContextListener</listener-class>
+    </listener>
 
-  <display-name>Archetype Created Web Application</display-name>
-  
-  <listener>
-  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  
-  <context-param>
-  	<param-name>contextConfigLocation</param-name>
-  	<param-value>WEB-INF/beans.xml</param-value>
-  </context-param>
-  
-  <servlet>
-  	<servlet-name>CXFServlet</servlet-name>
-  	<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>CXFServlet</servlet-name>
-  	<url-pattern>/*</url-pattern>
-  </servlet-mapping>
-  
+    <servlet>
+        <description>JAX-RS Data Collection Endpoint</description>
+        <display-name>JAX-RS Data Collection Servlet</display-name>
+        <servlet-name>JAX-RS-DataCollector</servlet-name>
+        <servlet-class>
+            org.apache.cxf.transport.servlet.CXFServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JAX-RS-DataCollector</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
 </web-app>
-

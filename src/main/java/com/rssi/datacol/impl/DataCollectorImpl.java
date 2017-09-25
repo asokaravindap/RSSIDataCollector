@@ -11,22 +11,29 @@ import java.sql.Statement;
 
 public class DataCollectorImpl implements DataCollector{
 
-	public int storeData(AccessPoint[] aps) {
+	//public int storeData(AccessPoint[] aps) {
+	public int storeData() {	
+		
+		String timestamp = "1234";
+		String str = "mac1rssitest";
 		
 		if(MySQLConnector.getInstance().isInitialized()){
 			
 			Connection connection = MySQLConnector.getInstance().getConnection();	
 			try {
 				Statement statement = connection.createStatement();
-				statement.executeUpdate("INSERT...");
+				statement.executeUpdate("INSERT INTO temp (timestamp,scan) VALUES ('" + timestamp + "','" + str + "')");
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
+	
+		// do a array to string conversion when storing the data into db and the text..
+		
 		// store the data in a text file initially and then consider hibernate + MySQL
-		return 0;
+		return 55;
 	}
 
 	public int getStoredDataCount() {

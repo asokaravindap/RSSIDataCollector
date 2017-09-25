@@ -9,13 +9,13 @@ import com.rssi.datacol.db.*;
 
 public class ContextListener implements ServletContextListener {
 
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
+	public void contextInitialized(ServletContextEvent servletContextEvent) {
     	
     	Properties properties = new Properties();
     	PropertyPack propertiesObj = new PropertyPack();
     	
     	try {
-			properties.load(servletContextEvent.getServletContext().getResourceAsStream("/WEB-INF/server.properties"));		    
+			properties.load(servletContextEvent.getServletContext().getResourceAsStream("/WEB-INF/service.properties"));		    
 			
 			propertiesObj.setdbPath(properties.getProperty("DBPath"));
 			propertiesObj.setuserName(properties.getProperty("UserName"));
