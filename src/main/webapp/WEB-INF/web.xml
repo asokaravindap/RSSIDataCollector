@@ -7,7 +7,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
   <display-name>Archetype Created Web Application</display-name>
   
   <listener>
-  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	<listener-class>com.rssi.datacol.ContextListener</listener-class>
   </listener>
   
   <context-param>
