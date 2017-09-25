@@ -1,5 +1,7 @@
 package com.rssi.datacol;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -15,15 +17,9 @@ import com.rssi.datacol.beans.AccessPoint;
 @Produces(MediaType.APPLICATION_JSON)
 public interface DataCollector {
 
-	/*
 	@POST
 	@Path("/storeData")
-	public int storeData(AccessPoint[] person);
-	**/
-	
-	@GET
-	@Path("/temp")
-	public int storeData();
+	public int storeData(List<AccessPoint> aps);
 	
 	@GET
 	@Path("/getStoredDataCount")
