@@ -3,8 +3,7 @@ package com.rssi.datacol.db;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
-
-import com.rssi.datacol.beans.PropertyPack; 
+import java.util.Properties;
 
 public class MySQLConnector {
 	
@@ -14,7 +13,7 @@ public class MySQLConnector {
 	        return Holder.INSTANCE;
 	    }
 	
-	 public void init(PropertyPack propertiesObj) throws Exception{
+	 public void init(Properties propertiesObj) throws Exception{	 
 		 
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -27,8 +26,7 @@ public class MySQLConnector {
 			connection = null;
 
 			try {
-				//connection = DriverManager.getConnection("jdbc:mysql://localhost/utstraffic","root", "uts");
-				connection = DriverManager.getConnection(propertiesObj.getdbPath(), propertiesObj.getuserName(), propertiesObj.getpassword());
+				connection = DriverManager.getConnection(propertiesObj.getProperty("DBPath"), propertiesObj.getProperty("UserName"), propertiesObj.getProperty("Password"));
 			} catch (SQLException e) {
 				System.out.println("Connection Failed! Check output console");
 				throw new SQLException();

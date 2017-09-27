@@ -2,15 +2,15 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
     <display-name>DATACOLLECTOR-API</display-name>
+    
+    <listener>
+        <listener-class>com.rssi.datacol.ContextListener</listener-class>
+    </listener>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/cxf-servlet.xml</param-value>
     </context-param>
-    
-    <listener>
-        <listener-class>com.rssi.datacol.ContextListener</listener-class>
-    </listener>
 
     <servlet>
         <description>JAX-RS Data Collection Endpoint</description>
