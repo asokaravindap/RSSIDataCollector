@@ -11,19 +11,22 @@ import javax.ws.rs.core.MediaType;
 
 import com.rssi.datacol.beans.AccessPoint;
 
-
 @Path("/datacollector/")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
 public interface DataCollector {
 
 	@POST
 	@Path("/storeData")
-	public int storeData(List<AccessPoint> aps);
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean storeData(List<AccessPoint> aps);
 	
 	@GET
 	@Path("/getStoredDataCount")
 	public int getStoredDataCount();
+	
+	@POST
+	@Path("/setOrbFlag")
+	public boolean setOrbFlag(boolean orbFlag);
 	
 	@POST
 	@Path("/setDate")

@@ -3,7 +3,6 @@ package com.rssi.datacol.impl;
 import com.rssi.datacol.DataCollector;
 import com.rssi.datacol.beans.AccessPoint;
 import com.rssi.datacol.db.MySQLConnector;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -11,14 +10,14 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DataCollectorImpl implements DataCollector{
 	
 	private String outputFile;
+	private boolean orbFlag = false;
 
-	public int storeData(List<AccessPoint> aps) {
+	public boolean storeData(List<AccessPoint> aps) {
 		
 		String timestamp = String.valueOf(System.currentTimeMillis());
 		String data = this.arrayToString(aps); 
@@ -37,7 +36,7 @@ public class DataCollectorImpl implements DataCollector{
 		
 		this.appendToFile(outputFile, timestamp + ";" + data + "\n");    
     		
-		return 0; 
+		return this.orbFlag; 
 	}
 
 	private String arrayToString(List<AccessPoint> aps){
@@ -46,8 +45,8 @@ public class DataCollectorImpl implements DataCollector{
 		
 		for(AccessPoint ap : aps){
 			
-			combStr = combStr + ap.getMacAddress() + "," + ap.getRssi() + "," + ap.getFrequency() + 
-					"," + ap.getQuality() + ";"; 
+			combStr = combStr + ap.getMacAddress() + "," + ap.getSsid() + "," + ap.getFrequency() + 
+					"," + ap.getRssi() + ";";  
 		}
 		
 	    if(combStr.length() > 0){
@@ -94,7 +93,7 @@ public class DataCollectorImpl implements DataCollector{
 	
 	public int getStoredDataCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 6;
 	}
 
 	public int setDate(String date) {
@@ -108,6 +107,13 @@ public class DataCollectorImpl implements DataCollector{
 
 	public void setOutputFile(String outputFile) {
 		this.outputFile = outputFile;
+	}
+
+	public boolean setOrbFlag(boolean orbFlag) {	
+		
+		this.orbFlag = orbFlag;
+		
+		return this.orbFlag; 
 	}
 	
 }

@@ -3,8 +3,8 @@ package com.rssi.datacol.beans;
 public class AccessPoint {
 	
 	String macAddress;
+	String ssid;
 	int rssi;
-	int quality;
 	double frequency;
 	
 	public String getMacAddress() {
@@ -15,20 +15,20 @@ public class AccessPoint {
 		this.macAddress = macAddress;
 	}
 	
+	public String getSsid() {
+		return ssid;
+	}
+
+	public void setSsid(String ssid) {
+		this.ssid = ssid;
+	}
+
 	public int getRssi() {
 		return rssi;
 	}
 	
 	public void setRssi(int rssi) {
 		this.rssi = rssi;
-	}
-	
-	public int getQuality() {
-		return quality;
-	}
-	
-	public void setQuality(int quality) {
-		this.quality = quality;
 	}
 	
 	public double getFrequency() {
